@@ -8,7 +8,7 @@ functions:
     handler: ./go-long
     image: alexellis2/go-long:latest
     environment:
-      write_timeout: 5m
-      read_timeout: 5m
-      exec_timeout: 5m
-
+      write_timeout: 22s
+      read_timeout: 22s
+      exec_timeout: 22s
+      handler_wait_duration: 20s
