@@ -2,24 +2,26 @@ package function
 
 import (
 	"fmt"
-	"io/ioutil"
+	"log"
 	"net/http"
+	"os"
 	"time"
 )
 
 func Handle(w http.ResponseWriter, r *http.Request) {
-	var input []byte
 
 	if r.Body != nil {
 		defer r.Body.Close()
-
-		body, _ := ioutil.ReadAll(r.Body)
-
-		input = body
 	}
 
-	time.Sleep(time.Second * (4 * 60))
+	sleepVal := os.Getenv("handler_wait_duration")
+	sleepDuration, _ := time.ParseDuration(sleepVal)
+	sleepDurationStr := sleepDuration.String()
+
+	log.Printf("Start sleep for: %s\n", sleepDurationStr)
+	time.Sleep(sleepDuration)
+	log.Printf("Sleep done for: %s\n", sleepDurationStr)
 
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(fmt.Sprintf("Hello world, input was: %s", string(input))))
+	w.Write([]byte(fmt.Sprintf("Had a nice sleep for: %s", sleepDuration.String())))
 }

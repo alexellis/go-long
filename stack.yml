@@ -12,3 +12,8 @@ functions:
       read_timeout: 22s
       exec_timeout: 22s
       handler_wait_duration: 20s
+
+configuration:
+  templates:
+    - name: golang-middleware
+
