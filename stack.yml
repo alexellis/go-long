@@ -6,14 +6,14 @@ functions:
   go-long:
     lang: golang-middleware
     handler: ./go-long
-    image: alexellis2/go-long:latest
+    image: alexellis2/go-long:0.1.2
     environment:
-      write_timeout: 22s
-      read_timeout: 22s
-      exec_timeout: 22s
-      handler_wait_duration: 20s
+      write_timeout: 3m
+      read_timeout: 3m
+      exec_timeout: 3m
+      handler_wait_duration: 60s
 
 configuration:
   templates:
-    - name: golang-middleware
+  - name: golang-middleware
 
