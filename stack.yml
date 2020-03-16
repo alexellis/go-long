@@ -6,7 +6,7 @@ functions:
   go-long:
     lang: golang-middleware
     handler: ./go-long
-    image: alexellis2/go-long:0.1.2
+    image: alexellis2/go-long:0.1.3
     environment:
       write_timeout: 3m
       read_timeout: 3m
