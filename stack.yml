@@ -8,13 +8,14 @@ functions:
     handler: ./go-long
     image: alexellis2/go-long:0.3.0
     environment:
-      write_timeout: 2m30s
-      read_timeout: 2m
-      exec_timeout: 2m
-      handler_wait_duration: 1m30s
+      write_timeout: 10m2s
+      read_timeout: 10m2s
+      exec_timeout: 10m
+      handler_wait_duration: 9m50s
       healthcheck_interval: 5s
     annotations:
       topic: "pipeline.subscription"
+      test: "1"
     labels:
       com.openfaas.scale.min: 1
       com.openfaas.scale.max: 1
@@ -27,6 +28,23 @@ functions:
       write_timeout: 3m
       read_timeout: 3m
       exec_timeout: 3m
+
+  py-long:
+    lang: python3-http
+    handler: ./py-long
+    image: ttl.sh/py-long:0.9
+    build_args:
+      TEST_ENABLED: "false"
+    environment:
+      write_timeout: 10m2s
+      read_timeout: 10m2s
+      exec_timeout: 10m
+      handler_wait_duration_secs: 540
+      healthcheck_interval: 5s
+      test: 3
+    annotation:
+      version: "7"
+
 
 configuration:
   templates:
