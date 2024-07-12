@@ -16,11 +16,14 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 
 	sleepVal := os.Getenv("handler_wait_duration")
 	sleepDuration, _ := time.ParseDuration(sleepVal)
-	sleepDurationStr := sleepDuration.String()
 
-	log.Printf("Start sleep for: %s\n", sleepDurationStr)
+	if xSleep := r.URL.Query().Get("X-Sleep"); len(xSleep) > 0 {
+		sleepDuration, _ = time.ParseDuration(xSleep)
+	}
+
+	log.Printf("Start sleep for: %s\n", sleepDuration.String())
 	time.Sleep(sleepDuration)
-	log.Printf("Sleep done for: %s\n", sleepDurationStr)
+	log.Printf("Sleep done for: %s\n", sleepDuration.String())
 
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(fmt.Sprintf("Had a nice sleep for: %s", sleepDuration.String())))
