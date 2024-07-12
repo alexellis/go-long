@@ -20,10 +20,10 @@ functions:
       com.openfaas.scale.min: 1
       com.openfaas.scale.max: 1
 
-  node18-sleep:
-    lang: node18
-    handler: ./node18-sleep
-    image: alexellis2/node18-sleep:0.0.1
+  node20-sleep:
+    lang: node20
+    handler: ./node20-sleep
+    image: alexellis2/node20-sleep:0.0.1
     environment:
       write_timeout: 5m2s
       read_timeout: 5m2s
@@ -49,5 +49,5 @@ functions:
 configuration:
   templates:
   - name: golang-middleware
-  - name: node12
+  - name: node20
 
