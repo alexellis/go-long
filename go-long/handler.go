@@ -17,7 +17,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	sleepVal := os.Getenv("handler_wait_duration")
 	sleepDuration, _ := time.ParseDuration(sleepVal)
 
-	if xSleep := r.URL.Query().Get("X-Sleep"); len(xSleep) > 0 {
+	if xSleep := r.Header.Get("X-Sleep"); len(xSleep) > 0 {
 		sleepDuration, _ = time.ParseDuration(xSleep)
 	}
 
