@@ -32,19 +32,15 @@ functions:
   py-long:
     lang: python3-http
     handler: ./py-long
-    image: ttl.sh/py-long:0.9
+    image: alexellis2/py-long:0.0.2
     build_args:
       TEST_ENABLED: "false"
     environment:
-      write_timeout: 10m2s
-      read_timeout: 10m2s
-      exec_timeout: 10m
-      handler_wait_duration_secs: 540
+      write_timeout: 2m2s
+      read_timeout: 2m2s
+      exec_timeout: 2m
+      handler_wait_duration_secs: 65
       healthcheck_interval: 5s
-      test: 3
-    annotation:
-      version: "7"
-
 
 configuration:
   templates:
