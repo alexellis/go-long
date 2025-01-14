@@ -50,4 +50,5 @@ configuration:
   templates:
   - name: golang-middleware
   - name: node20
+  - name: python3-http
 
