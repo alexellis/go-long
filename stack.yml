@@ -8,10 +8,10 @@ functions:
     handler: ./go-long
     image: alexellis2/go-long:0.3.2
     environment:
-      write_timeout: 10m2s
-      read_timeout: 10m2s
-      exec_timeout: 10m
-      handler_wait_duration: 9m50s
+      write_timeout: 16s
+      read_timeout: 16s
+      exec_timeout: 15s
+      handler_wait_duration: 20s
       healthcheck_interval: 5s
     annotations:
       topic: "pipeline.subscription"
